@@ -1,4 +1,8 @@
 
+img {
+    pointer-events: none;
+}
+
 .cabecalho {
     background-color: var(--cor-contraste-claro);
     border-radius: 0 0 10px 10px;
@@ -78,6 +82,12 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+}
+
+.name-itens {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .menu-item {
