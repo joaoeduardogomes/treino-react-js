@@ -1,14 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import { busca } from '../api/api';
 import '../assets/css/post.css';
-import {useParams} from 'react-router-dom';
+import {useParams, useNavigate} from 'react-router-dom';
 
 const Post = () => {
+    let navegar = useNavigate(); //useNavigate é a forma nova do useHistory
     const {id} = useParams();
     const[post, setPost] = useState({})
 
     useEffect(() => {
-        busca(`/posts/${id}`, setPost)
+        busca(`/posts/${id}`, setPost).catch(() => {
+            navegar('/404'); //se for alterada a url, a renderização será redirecionada para a rota '404'
+        });
     }, [id]);
     
     return (
