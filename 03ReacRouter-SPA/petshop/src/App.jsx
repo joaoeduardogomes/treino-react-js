@@ -8,6 +8,7 @@ import Sobre from './paginas/Sobre'
 import Pagina404 from './paginas/Pagina404'
 import Cabecalho from './components/Cabecalho'
 import Post from './paginas/Post';
+import Categoria from './paginas/Categoria';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
             <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route path="/sobre" element={<Sobre />} />
+                <Route path='/categoria/:id/*' element={<Categoria />} />
                 <Route path="/posts/:id" element={<Post />} />
                 <Route path="*" element={<Pagina404 />} /> {/* Qualquer caminho que não estiver nas rotas, cairá no erro por padrão */}
             </Routes>
