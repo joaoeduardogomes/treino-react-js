@@ -1,4 +1,5 @@
 // Usamos o React Router Dom em: https://www.npmjs.com/package/react-router-dom
+// pra aparecer o post, abrir a api com o comando: 'npx json-server --watch db.json --port 5000'
 import React from 'react'
 import './assets/css/base/base.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; //Routes é a forma nova do Switch

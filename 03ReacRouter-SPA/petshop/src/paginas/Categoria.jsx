@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import ListaCategorias from '../components/ListaCategorias';
 import '../assets/css/blog.css';
 import ListaPost from '../components/ListaPost';
-import { useParams, Route, useMatch } from 'react-router';
+import { useParams, Link } from 'react-router';
+import { busca } from '../api/api';
 
 const Categoria = () => {
 
-    const {id} = useParams()
-    const {path} = useMatch() //'useMatch' é a versão nova de 'useRouteMatch'
+    const {id} = useParams();
+    //const {path} = useMatch(); //'useMatch' é a versão nova de 'useRouteMatch' --> mas não tá funcionando
+    const [subcategorias, setSubcategorias] = useState([]);
 
+    useEffect(() => {
+        busca(`/categorias/${id}`, (categoria) => (
+            setSubcategorias(categoria.subcategorias)
+        ));
+    }, [id]);
     
     return(
         <>
@@ -17,9 +24,9 @@ const Categoria = () => {
         </div>
 
         <ListaCategorias />
-        <Route exact path={`${path}/`}>
-            <ListaPost url={`/posts?categoria=${id}`} />
-        </Route>
+        
+        <ListaPost url={`/posts?categoria=${id}`} />
+
         </>
     )
 }
